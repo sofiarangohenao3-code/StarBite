@@ -1,0 +1,252 @@
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap");
+
+@import "tailwindcss";
+@source "../../views/**/*.html";
+
+@font-face {
+  font-family: 'Efco Brookshire';
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url('/assets/fonts/EFCO Brookshire Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Garet';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: block;
+  src: url('/assets/fonts/Garet-Book.woff') format('woff');
+}
+
+@theme {
+  --font-brookshire: 'Efco Brookshire', serif;
+  --font-merriweather: 'Merriweather', serif;
+  --font-garet: 'Garet', sans-serif;
+
+  --color-*: initial;
+  --color-black: #151515;
+  --color-grey: #C8C8C8;
+  --color-white-grey: #E0E0E0;
+  --color-white: #FFFFFF;
+  --color-white-blue: #F1FFFE;
+  --color-blue: #C6F5F2;
+  --color-green: #83B356;
+  --color-white-yellow: #F5FB8E;
+  --color-yellow: #EFD421;
+  --color-yellow-orange: #F2AB19;
+  --color-white-orange: #F5A257;
+  --color-orange: #ff160e;
+}
+
+
+.logo-neon {
+  text-shadow:
+    -2px -2px 0 white,
+    0 0 12px #eaf25f,
+    0 0 28px #e1ff00;
+}
+
+.btn-neon {
+  box-shadow:
+    0 0 4px #f98c6e,
+    0 0 8px #ff160e;
+}
+
+
+.tab-btn.active {
+  background: #ff160e;
+  color: white;
+}
+.tab-btn:not(.active) {
+  background: white;
+  color: #C8C8C8;
+}
+.tab-panel {
+  display: none;
+}
+.tab-panel.active {
+  display: block;
+}
+
+/* ── Account: estrellas ── */
+.star {
+  color: #ff160e;
+}
+.star.empty {
+  color: #E0E0E0;
+}
+
+/* ── Account: focus inputs ── */
+.account-input:focus {
+  border-color: #ff160e !important;
+  outline: none;
+}
+
+/* ==========================================================================
+   HOJA DE ESTILOS: DETALLE DE RESTAURANTE
+   ========================================================================== */
+
+/* ── Componente: Hero principal ── */
+.hero {
+  position: relative;
+  height: 320px;
+  background: #1a1a1a;
+  overflow: hidden;
+}
+.hero img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  opacity: .7;
+  transition: transform .6s ease;
+}
+.hero:hover img { transform: scale(1.03); }
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,.8) 0%, transparent 65%);
+}
+.hero-bar {
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 0.25rem;
+  background: #ff160e;
+}
+.hero-back {
+  position: absolute; top: 1.5rem; left: 1.5rem;
+  background: rgba(255,255,255,.15);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,.3);
+  color: white;
+  border-radius: 999px;
+  padding: .4rem 1rem;
+  font-size: .75rem;
+  font-family: var(--font-garet, sans-serif);
+  letter-spacing: .05em;
+  cursor: pointer;
+  transition: background .2s;
+  text-decoration: none;
+  display: inline-flex; align-items: center; gap: .4rem;
+  z-index: 20;
+}
+.hero-back:hover { background: rgba(255,255,255,.28); }
+
+/* Color del tema global */
+.text-orange { color: #ff160e !important; }
+
+/* ── Barra de botones de acción ── */
+.actions-bar {
+  display: flex; gap: .75rem;
+  padding: 1.25rem 2rem;
+  background: white;
+  border-bottom: 1px solid #f0f0f0;
+  flex-wrap: wrap;
+}
+.btn-rest {
+  display: inline-flex; align-items: center; gap: .5rem;
+  padding: .6rem 1.2rem;
+  border-radius: 999px;
+  font-family: var(--font-garet, sans-serif);
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: 2px solid;
+  transition: all .2s;
+}
+.btn-fav  { background: white; border-color: #ff160e; color: #ff160e; }
+.btn-fav:hover, .btn-fav.active  { background: #ff160e; color: white; }
+.btn-want { background: white; border-color: #3B82F6; color: #3B82F6; }
+.btn-want:hover, .btn-want.active { background: #3B82F6; color: white; }
+
+/* ── Estrellas interactivas (Formulario) ── */
+.star-picker { display: flex; gap: .35rem; margin-bottom: 1rem; }
+.star-picker span {
+  font-size: 1.6rem;
+  cursor: pointer;
+  color: #D1D5DB;
+  transition: color .15s, transform .15s;
+  line-height: 1;
+}
+.star-picker span.active { color: #ff160e; }
+.star-picker span:hover  { transform: scale(1.2); }
+
+/* Campos de Texto */
+#review-form-inner textarea, textarea {
+  width: 100%;
+  border: 1.5px solid #E5E7EB;
+  border-radius: 1rem;
+  padding: .85rem 1rem;
+  font-family: var(--font-garet, sans-serif);
+  font-size: .85rem;
+  resize: none;
+  outline: none;
+  transition: border-color .2s;
+  color: #1f2937;
+}
+#review-form-inner textarea:focus, textarea:focus { border-color: #ff160e; }
+
+/* Botón enviar */
+.btn-submit {
+  margin-top: .75rem;
+  width: 100%;
+  background: #ff160e;
+  color: white;
+  border: none;
+  padding: .75rem;
+  border-radius: 999px;
+  font-family: var(--font-garet, sans-serif);
+  font-weight: 700;
+  font-size: .82rem;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: opacity .2s;
+}
+.btn-submit:hover { opacity: .88; }
+
+/* ── Elementos de la lista de opiniones (inyectados por JS) ── */
+.review-item {
+  border-bottom: 1px solid #F3F4F6;
+  padding: 1rem 0;
+  font-family: var(--font-garet, sans-serif);
+}
+.review-item:last-child { border-bottom: none; }
+.review-header {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: .4rem;
+}
+.review-user  { font-size: .8rem; font-weight: 700; color: #1f2937; }
+.review-stars { color: #ff160e; font-size: .85rem; }
+.review-date  { font-size: .72rem; color: #9CA3AF; }
+.review-desc  { font-size: .83rem; color: #6B7280; line-height: 1.55; }
+
+/* ── Mensajes Toast flotantes ── */
+#toast {
+  position: fixed;
+  bottom: 2rem; left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: #1F2937;
+  color: white;
+  padding: .65rem 1.4rem;
+  border-radius: 999px;
+  font-family: var(--font-garet, sans-serif);
+  font-size: .82rem;
+  font-weight: 600;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s, transform .3s;
+  z-index: 100;
+}
+#toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* Shimmer Loaders */
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e8e8e8 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+  border-radius: .5rem;
+}
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}

@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StarBite – Restaurante</title>
+  <link href="/css/output.css" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --brand: #ff160e;
+      --brand-soft: #fff2f1;
+      --black: #151515;
+      --grey: #C8C8C8;
+      --grey-mid: #6B7280;
+      --grey-light: #F5F5F5;
+      --white: #FFFFFF;
+      --radius-sm: 12px;
+      --radius-md: 18px;
+      --radius-lg: 28px;
+      --shadow: 0 2px 12px rgba(0,0,0,.07);
+      --font-body: 'Garet', sans-serif;
+      --font-display: 'Efco Brookshire', serif;
+    }
+
+    body {
+      background: #f4f4f2;
+      font-family: var(--font-body);
+      color: var(--black);
+      min-height: 100vh;
+      display: flex;
+    }
+
+    /* ── Sidebar ── */
+    .sidebar {
+      width: 72px;
+      position: fixed;
+      left: 0; top: 0;
+      height: 100vh;
+      background: var(--white);
+      border-right: 1px solid #eee;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 40;
+      padding: 0 0 24px;
+    }
+    .sidebar-logo { width: 72px; height: 72px; display: flex; align-items: center; justify-content: center; }
+    .sidebar-logo img { width: 52px; height: 52px; object-fit: contain; }
+    .sidebar-nav { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 32px; }
+    .sidebar-nav a { color: var(--grey); transition: color .2s; }
+    .sidebar-nav a:hover, .sidebar-nav a.active { color: var(--brand); }
+    .sidebar-user a { color: var(--brand); }
+
+    /* ── Main ── */
+    .main { margin-left: 72px; flex: 1; min-height: 100vh; display: flex; flex-direction: column; }
+
+    /* ── Cover ── */
+    .cover {
+      position: relative;
+      height: 380px;
+      overflow: hidden;
+      background: #1a1a1a;
+    }
+    .cover-img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: .75;
+      transition: transform .7s ease;
+    }
+    .cover:hover .cover-img { transform: scale(1.04); }
+    .cover-gradient {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.85) 0%, rgba(0,0,0,.1) 55%, transparent 100%);
+    }
+    .cover-top-bar {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: var(--brand);
+    }
+    .back-btn {
+      position: absolute;
+      top: 20px; left: 20px;
+      background: rgba(255,255,255,.15);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,.3);
+      color: white;
+      border-radius: 999px;
+      padding: 8px 18px;
+      font-size: 12px;
+      font-family: var(--font-body);
+      font-weight: 700;
+      letter-spacing: .04em;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background .2s;
+      z-index: 10;
+    }
+    .back-btn:hover { background: rgba(255,255,255,.28); }
+    .cover-content {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 28px 36px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 20px;
+      z-index: 5;
+    }
+    .cover-left { display: flex; align-items: flex-end; gap: 20px; }
+    .rest-avatar {
+      width: 88px; height: 88px;
+      border-radius: var(--radius-md);
+      border: 4px solid white;
+      overflow: hidden;
+      flex-shrink: 0;
+      background: white;
+      box-shadow: 0 4px 20px rgba(0,0,0,.3);
+    }
+    .rest-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .rest-title h1 {
+      color: white;
+      font-family: var(--font-display);
+      font-size: 32px;
+      line-height: 1.1;
+      text-shadow: 0 2px 12px rgba(0,0,0,.4);
+    }
+    .rest-title p { color: rgba(255,255,255,.75); font-size: 13px; margin-top: 4px; }
+    .cover-right { text-align: right; flex-shrink: 0; }
+    .cover-rating-num { font-size: 36px; font-weight: 700; color: white; line-height: 1; }
+    .cover-stars { color: var(--brand); font-size: 18px; margin-top: 4px; }
+    .cover-reviews { color: rgba(255,255,255,.6); font-size: 11px; margin-top: 3px; }
+
+    /* ── Action bar ── */
+    .action-bar {
+      background: white;
+      border-bottom: 1px solid #eee;
+      padding: 14px 36px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .action-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 22px;
+      border-radius: 999px;
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border: 2px solid;
+      transition: all .2s;
+      background: white;
+    }
+    .action-btn.fav { border-color: var(--brand); color: var(--brand); }
+    .action-btn.fav:hover, .action-btn.fav.active { background: var(--brand); color: white; }
+    .action-btn.want { border-color: #3B82F6; color: #3B82F6; }
+    .action-btn.want:hover, .action-btn.want.active { background: #3B82F6; color: white; }
+
+    /* ── Body layout ── */
+    .body-grid {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 24px;
+      padding: 28px 36px 48px;
+      flex: 1;
+      min-height: 0;
+    }
+
+    /* ── Cards ── */
+    .card {
+      background: white;
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+    .card + .card { margin-top: 16px; }
+    .card-title {
+      font-family: var(--font-display);
+      color: var(--brand);
+      font-size: 18px;
+      margin-bottom: 14px;
+    }
+
+    /* ── Info grid ── */
+    .info-desc { font-size: 13px; color: var(--grey-mid); line-height: 1.7; margin-bottom: 20px; }
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--grey-light);
+      border-radius: var(--radius-sm);
+      padding: 14px 16px;
+    }
+    .info-icon { color: var(--brand); flex-shrink: 0; }
+    .info-label { font-size: 10px; color: var(--grey); font-weight: 700; letter-spacing: .07em; text-transform: uppercase; }
+    .info-value { font-size: 13px; font-weight: 700; color: var(--black); margin-top: 2px; }
+    .info-value a { color: var(--brand); text-decoration: none; }
+    .info-value a:hover { text-decoration: underline; }
+
+    /* ── Social links ── */
+    .social-links { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+    .social-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--grey-light);
+      border-radius: 999px;
+      padding: 8px 16px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--grey-mid);
+      text-decoration: none;
+      transition: color .2s, background .2s;
+    }
+    .social-btn:hover { color: var(--brand); background: var(--brand-soft); }
+
+    /* ── Tag rows ── */
+    .tags-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
+    .tag-group-title {
+      font-family: var(--font-display);
+      color: var(--brand);
+      font-size: 15px;
+      margin-bottom: 10px;
+    }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag {
+      font-size: 11px;
+      font-weight: 700;
+      border-radius: 999px;
+      padding: 5px 13px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    .tag-cuisine { background: var(--brand-soft); color: var(--brand); }
+    .tag-dietary { background: #f0faf0; color: #2d6a2d; }
+    .tag-payment { background: var(--grey-light); color: var(--grey-mid); }
+    .tag-service { background: #eff6ff; color: #1e40af; }
+    .tag-pop { background: var(--grey-light); color: var(--grey-mid); }
+
+    /* ── Menu grid ── */
+    .menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .menu-card {
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      background: var(--grey-light);
+      transition: transform .2s;
+      cursor: pointer;
+    }
+    .menu-card:hover { transform: scale(1.03); }
+    .menu-img { width: 100%; height: 110px; object-fit: cover; display: block; }
+    .menu-img-placeholder { width: 100%; height: 110px; background: #eee; display: flex; align-items: center; justify-content: center; color: #ccc; font-size: 28px; }
+    .menu-info { padding: 10px 12px; }
+    .menu-badge { display: inline-block; background: var(--brand); color: white; font-size: 9px; font-weight: 700; border-radius: 999px; padding: 2px 8px; margin-bottom: 5px; }
+    .menu-name { font-size: 12px; font-weight: 700; color: var(--black); line-height: 1.3; }
+    .menu-desc { font-size: 10px; color: var(--grey); margin-top: 3px; line-height: 1.4; }
+    .menu-price { font-size: 13px; font-weight: 700; color: var(--brand); margin-top: 6px; }
+
+    /* ── Right column ── */
+    .right-col { display: flex; flex-direction: column; gap: 16px; }
+
+    /* ── Rating summary ── */
+    .rating-summary { display: flex; align-items: center; gap: 20px; }
+    .rating-num { font-size: 52px; font-weight: 700; color: var(--black); line-height: 1; }
+    .rating-meta .stars { color: var(--brand); font-size: 20px; }
+    .rating-meta p { font-size: 11px; color: var(--grey); margin-top: 4px; }
+
+    /* ── Review form ── */
+    .star-picker { display: flex; gap: 6px; margin-bottom: 14px; }
+    .star-picker span {
+      font-size: 26px;
+      cursor: pointer;
+      color: #D1D5DB;
+      transition: color .15s, transform .15s;
+      line-height: 1;
+      user-select: none;
+    }
+    .star-picker span.active { color: var(--brand); }
+    .star-picker span:hover { transform: scale(1.2); }
+    .review-textarea {
+      width: 100%;
+      border: 1.5px solid #E5E7EB;
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      font-family: var(--font-body);
+      font-size: 13px;
+      resize: none;
+      outline: none;
+      transition: border-color .2s;
+      color: var(--black);
+    }
+    .review-textarea:focus { border-color: var(--brand); }
+    .btn-submit {
+      margin-top: 10px;
+      width: 100%;
+      background: var(--brand);
+      color: white;
+      border: none;
+      padding: 13px;
+      border-radius: 999px;
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: opacity .2s;
+    }
+    .btn-submit:hover { opacity: .88; }
+    .btn-submit:disabled { opacity: .5; cursor: default; }
+
+    /* ── Reviews list ── */
+    .review-item { padding: 14px 0; border-bottom: 1px solid #F3F4F6; }
+    .review-item:last-child { border-bottom: none; }
+    .review-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px; }
+    .review-user { font-size: 13px; font-weight: 700; color: var(--black); }
+    .review-stars { color: var(--brand); font-size: 13px; }
+    .review-date { font-size: 11px; color: var(--grey); margin-bottom: 6px; }
+    .review-text { font-size: 12px; color: var(--grey-mid); line-height: 1.6; }
+    .review-actions { display: flex; gap: 8px; margin-top: 8px; }
+    .review-action-btn {
+      font-size: 11px;
+      font-weight: 700;
+      font-family: var(--font-body);
+      border-radius: 999px;
+      padding: 4px 12px;
+      cursor: pointer;
+      transition: all .15s;
+      border: 1px solid;
+    }
+    .review-action-btn.edit { border-color: #E5E7EB; color: var(--grey-mid); background: white; }
+    .review-action-btn.edit:hover { border-color: var(--brand); color: var(--brand); }
+    .review-action-btn.del { border-color: #fecaca; color: #ef4444; background: white; }
+    .review-action-btn.del:hover { background: #ef4444; color: white; border-color: #ef4444; }
+    .empty-state { font-size: 13px; color: var(--grey); font-style: italic; text-align: center; padding: 24px 0; }
+    .login-prompt {
+      background: var(--brand-soft);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--grey-mid);
+    }
+    .login-prompt a { color: var(--brand); font-weight: 700; text-decoration: none; }
+
+    /* ── Map ── */
+    .map-wrap {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      height: 220px;
+      background: #eee;
+    }
+    .map-wrap iframe { width: 100%; height: 100%; border: 0; display: block; }
+
+    /* ── Toast ── */
+    #toast {
+      position: fixed;
+      bottom: 28px; left: 50%;
+      transform: translateX(-50%) translateY(16px);
+      background: var(--black);
+      color: white;
+      padding: 10px 22px;
+      border-radius: 999px;
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 700;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .3s, transform .3s;
+      z-index: 200;
+      white-space: nowrap;
+    }
+    #toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    /* ── Skeleton ── */
+    .skel {
+      background: linear-gradient(90deg, #f0f0f0 25%, #e8e8e8 50%, #f0f0f0 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.4s infinite;
+      border-radius: 8px;
+      display: inline-block;
+    }
+    @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="w-20 flex flex-col items-center fixed left-0 top-0 h-full z-20">
+    <div class="w-24 h-24">
+      <img src="/assets/images/logo_StarBite_bg.png" alt="Starbite logo" class="object-contain max-w-full h-auto">
+    </div>
+    <nav class="flex-1 flex flex-col items-center justify-center gap-10">
+      <a href="index.html" class="nav-link text-grey hover:text-orange transition-colors" data-page="index">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+      </a>
+      <a href="restaurants.html" class="nav-link text-grey hover:text-orange transition-colors" data-page="restaurants">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 21v-5a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v5"/><path d="M17.774 10.31a1.12 1.12 0 0 0-1.549 0 2.5 2.5 0 0 1-3.451 0 1.12 1.12 0 0 0-1.548 0 2.5 2.5 0 0 1-3.452 0 1.12 1.12 0 0 0-1.549 0 2.5 2.5 0 0 1-3.77-3.248l2.889-4.184A2 2 0 0 1 7 2h10a2 2 0 0 1 1.653.873l2.895 4.192a2.5 2.5 0 0 1-3.774 3.244"/><path d="M4 10.95V19a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8.05"/></svg>
+      </a>
+    </nav>
+    <div class="mt-auto mb-6">
+      <a href="log_in.html" class="nav-link" data-page="account">
+        <button class="text-orange hover:scale-110 transition-transform">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="10" r="3"/><path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662"/></svg>
+        </button>
+      </a>
+    </div>
+  </aside>
+
+  
+
+  <!-- Main -->
+  <main class="main">
+
+    <!-- Cover -->
+    <div class="cover">
+      <div class="cover-top-bar"></div>
+      <img id="cover-img" class="cover-img" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1400&q=80" alt="Portada del restaurante">
+      <div class="cover-gradient"></div>
+      <a href="restaurants.html" class="back-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+        Volver
+      </a>
+      <div class="cover-content">
+        <div class="cover-left">
+          <div class="rest-avatar">
+            <img id="logo-img" src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=200&q=80" alt="Logo">
+          </div>
+          <div class="rest-title">
+            <h1 id="rest-nombre">Cargando...</h1>
+            <p id="rest-direccion">—</p>
+          </div>
+        </div>
+        <div class="cover-right">
+          <div class="cover-rating-num" id="rest-rating-num">—</div>
+          <div class="cover-stars" id="rest-stars">☆☆☆☆☆</div>
+          <div class="cover-reviews" id="rest-reviews-count"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Action bar -->
+    <div class="action-bar">
+      <button id="btn-fav" class="action-btn fav" onclick="toggleGuardado('favorito')">
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        Favorito
+      </button>
+      <button id="btn-want" class="action-btn want" onclick="toggleGuardado('quiero_ir')">
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        Quiero ir
+      </button>
+    </div>
+
+    <!-- Body -->
+    <div class="body-grid">
+
+      <!-- Left column -->
+      <div>
+
+        <!-- Info principal -->
+        <div class="card">
+          <p id="info-desc" class="info-desc">Cargando descripción...</p>
+          <div class="info-grid">
+            <div class="info-item">
+              <span class="info-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.99 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.92 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </span>
+              <div>
+                <div class="info-label">Teléfono</div>
+                <div class="info-value" id="info-telefono">—</div>
+              </div>
+            </div>
+            <div class="info-item">
+              <span class="info-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </span>
+              <div>
+                <div class="info-label">Horario</div>
+                <div class="info-value" id="info-horario">—</div>
+              </div>
+            </div>
+            <div class="info-item">
+              <span class="info-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              </span>
+              <div>
+                <div class="info-label">Sitio web</div>
+                <div class="info-value"><a id="info-website" href="#" target="_blank">—</a></div>
+              </div>
+            </div>
+            <div class="info-item">
+              <span class="info-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              </span>
+              <div>
+                <div class="info-label">Dirección</div>
+                <div class="info-value" id="info-direccion-card">—</div>
+              </div>
+            </div>
+          </div>
+          <div id="social-links" class="social-links"></div>
+        </div>
+
+        <!-- Tags -->
+        <div class="card" style="margin-top:16px">
+          <div class="tags-2col">
+            <div>
+              <div class="tag-group-title">Tipo de cocina</div>
+              <div id="cuisine-tags" class="tags"></div>
+            </div>
+            <div>
+              <div class="tag-group-title">Opciones dietéticas</div>
+              <div id="dietary-tags" class="tags"></div>
+            </div>
+            <div>
+              <div class="tag-group-title">Métodos de pago</div>
+              <div id="payment-tags" class="tags"></div>
+            </div>
+            <div>
+              <div class="tag-group-title">Tipo de servicio</div>
+              <div id="services-tags" class="tags"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Platos -->
+        <div class="card" style="margin-top:16px">
+          <div class="card-title">Platos estrella</div>
+          <div id="menu-grid" class="menu-grid"></div>
+        </div>
+
+      </div>
+
+      <!-- Right column -->
+      <div class="right-col">
+
+        <!-- Rating -->
+        <div class="card">
+          <div class="card-title">Valoración global</div>
+          <div class="rating-summary">
+            <div class="rating-num" id="rating-big">—</div>
+            <div class="rating-meta">
+              <div class="stars" id="rating-stars-big">☆☆☆☆☆</div>
+              <p>Puntuación media</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tags populares -->
+        <div class="card">
+          <div class="card-title">Etiquetas populares</div>
+          <div id="pop-tags" class="tags"></div>
+        </div>
+
+        <!-- Formulario reseña -->
+        <div class="card">
+          <div class="card-title">Dejar reseña</div>
+          <div id="review-form-inner"></div>
+        </div>
+
+        <!-- Lista reseñas -->
+        <div class="card" style="flex:1">
+          <div class="card-title">Reseñas de clientes</div>
+          <div id="reviews-list"><p class="empty-state">Cargando reseñas...</p></div>
+        </div>
+
+        <!-- Mapa -->
+        <div class="map-wrap">
+          <iframe id="map-frame" src="" allowfullscreen loading="lazy" title="Ubicación en mapa"></iframe>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <div id="toast"></div>
+  <script src="/js/rest.js"></script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StarBite - Restaurantes</title>
+  <link href="/css/output.css" rel="stylesheet">
+</head>
+
+<body class="bg-white min-h-screen flex">
+
+  <aside class="w-20 flex flex-col items-center fixed left-0 top-0 h-full z-20">
+    <div class="w-24 h-24">
+      <img src="/assets/images/logo_StarBite_bg.png" alt="Starbite logo" class="object-contain max-w-full h-auto">
+    </div>
+    <nav class="flex-1 flex flex-col items-center justify-center gap-10">
+      <a href="index.html" class="nav-link text-grey hover:text-orange transition-colors" data-page="index">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+      </a>
+      <a href="restaurants.html" class="nav-link text-grey hover:text-orange transition-colors" data-page="restaurants">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 21v-5a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v5"/><path d="M17.774 10.31a1.12 1.12 0 0 0-1.549 0 2.5 2.5 0 0 1-3.451 0 1.12 1.12 0 0 0-1.548 0 2.5 2.5 0 0 1-3.452 0 1.12 1.12 0 0 0-1.549 0 2.5 2.5 0 0 1-3.77-3.248l2.889-4.184A2 2 0 0 1 7 2h10a2 2 0 0 1 1.653.873l2.895 4.192a2.5 2.5 0 0 1-3.774 3.244"/><path d="M4 10.95V19a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8.05"/></svg>
+      </a>
+    </nav>
+    <div class="mt-auto mb-6">
+      <a href="log_in.html" class="nav-link" data-page="account">
+        <button class="text-orange hover:scale-110 transition-transform">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="10" r="3"/><path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662"/></svg>
+        </button>
+      </a>
+    </div>
+  </aside>
+
+  <div class="flex-1 overflow-y-auto py-2 pr-2 pl-20">
+    <div class="bg-white-blue rounded-3xl shadow-2xl w-full h-full flex flex-col overflow-hidden">
+      <div class="bg-orange h-9 w-full"></div>
+
+      <div class="p-8 flex flex-col md:flex-row gap-6">
+        <div class="flex-1 bg-white/40 rounded-[2.5rem] p-8 border border-white/20 shadow-sm">
+          <h1 class="text-orange text-7xl md:text-8xl font-serif italic mb-6">RESTAURANTES</h1>
+        
+          <!-- Filtros dinámicos -->
+          <div id="filters-container" class="flex flex-wrap gap-3 max-w-3xl"></div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3 w-full md:w-80 shrink-0">
+          <div class="h-24 bg-white-grey rounded-[2rem] overflow-hidden shadow-inner">
+            <img src="https://images.unsplash.com/photo-1562967914-608f82629710?w=300&q=80" alt="Pollo frito" class="w-full h-full object-cover">
+          </div>
+          <div class="h-32 bg-white-grey rounded-[2.5rem] overflow-hidden shadow-inner">
+            <img src="https://images.unsplash.com/photo-1553621042-f6e147245754?w=300&q=80" alt="Sushi rolls" class="w-full h-full object-cover">
+          </div>
+          <div class="h-32 bg-white-grey rounded-[2.5rem] overflow-hidden shadow-inner">
+            <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=300&q=80" alt="Plato cocina" class="w-full h-full object-cover">
+          </div>
+          <div class="h-48 bg-white-grey rounded-[2.5rem] overflow-hidden shadow-inner row-span-2">
+            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=300&q=80" alt="Plato gourmet" class="w-full h-full object-cover">
+          </div>
+        </div>
+      </div>
+
+      <div class="px-8 pb-8">
+        <div id="restaurants-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="/js/restaurants.js"></script>
+</body>
+</html>

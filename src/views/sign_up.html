@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StarBite - Sign Up</title>
+  <link href="/css/output.css" rel="stylesheet">
+</head>
+
+<body class="bg-white min-h-screen flex">
+  <aside class="w-20 flex flex-col items-center fixed left-0 top-0 h-full z-20">
+    <div class="w-24 h-24">
+      <img src="/assets/images/logo_StarBite_bg.png" alt="Starbite logo" class="object-contain max-w-full h-auto">
+    </div>
+    <nav class="flex-1 flex flex-col items-center justify-center gap-10">
+      <a href="index.html" class="nav-link text-grey hover:text-orange transition-colors" data-page="index">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+      </a>
+      <a href="restaurants.html" class="nav-link text-grey hover:text-orange transition-colors" data-page="restaurants">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 21v-5a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v5"/><path d="M17.774 10.31a1.12 1.12 0 0 0-1.549 0 2.5 2.5 0 0 1-3.451 0 1.12 1.12 0 0 0-1.548 0 2.5 2.5 0 0 1-3.452 0 1.12 1.12 0 0 0-1.549 0 2.5 2.5 0 0 1-3.77-3.248l2.889-4.184A2 2 0 0 1 7 2h10a2 2 0 0 1 1.653.873l2.895 4.192a2.5 2.5 0 0 1-3.774 3.244"/><path d="M4 10.95V19a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8.05"/></svg>
+      </a>
+    </nav>
+    <div class="mt-auto mb-6">
+      <a href="log_in.html" class="nav-link" data-page="account">
+        <button class="text-orange hover:scale-110 transition-transform">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="10" r="3"/><path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662"/></svg>
+        </button>
+      </a>
+    </div>
+  </aside>
+
+  <div class="flex-1 overflow-y-auto py-2 pr-2 pl-20">
+    <div class="bg-white-blue rounded-3xl shadow-2xl w-full h-full flex flex-col overflow-hidden">
+      <div class="bg-orange h-9 w-full"></div>
+      <div class="flex-1 flex items-center justify-center px-12">
+        <div class="flex flex-col bg-white rounded-3xl shadow-xl px-10 py-10 w-[420px] shrink-0">
+          <h1 class="text-black text-3xl font-bold mb-8">Crea una cuenta de StarBite</h1>
+
+          <div class="mb-4 relative">
+            <label class="absolute -top-2 left-4 text-xs text-grey bg-white px-1 font-garet">Nombre</label>
+            <input id="signup-name" type="text"
+              class="w-full bg-white border-2 border-white-grey rounded-xl px-5 py-4 text-black outline-none font-garet text-sm focus:border-black transition-colors"/>
+          </div>
+
+          <div class="mb-4 relative">
+            <label class="absolute -top-2 left-4 text-xs text-grey bg-white px-1 font-garet">Email</label>
+            <input id="signup-email" type="email"
+              class="w-full bg-white border-2 border-white-grey rounded-xl px-5 py-4 text-black outline-none font-garet text-sm focus:border-black transition-colors"/>
+          </div>
+
+          <div class="mb-1 relative">
+            <input id="signup-password" type="password" placeholder="Choose a password"
+              class="w-full bg-white-grey rounded-xl px-5 py-4 text-black placeholder:text-grey outline-none font-garet text-sm pr-12"/>
+            <button type="button" onclick="togglePassword()"
+              class="absolute right-4 top-1/2 -translate-y-1/2 text-grey hover:text-black transition-colors">
+              <svg id="eyeIcon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49"/>
+                <path d="M14.084 14.158a3 3 0 0 1-4.242-4.242"/>
+                <path d="M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143"/>
+                <path d="m2 2 20 20"/>
+              </svg>
+            </button>
+          </div>
+          <p class="text-xs text-grey mb-5 font-garet px-1">La contraseña debe tener al menos 5 caracteres</p>
+
+          <label class="flex items-center gap-2 text-sm text-black cursor-pointer font-garet mb-6">
+            <input id="signup-remember" type="checkbox" checked class="w-4 h-4 accent-orange"/>
+            Keep me signed in
+          </label>
+
+          <div id="signup-msg" class="mb-3 text-sm font-garet hidden"></div>
+
+          <button type="button" onclick="register()"
+            class="w-full bg-black text-white font-bold py-4 rounded-xl mb-4 hover:bg-black/80 transition-colors font-garet">
+            Continuar
+          </button>
+
+          <a href="log_in.html" class="text-center text-sm font-bold underline text-black hover:text-orange transition-colors font-garet">
+            Volver
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/signup.js"></script>
+</body>
+</html>

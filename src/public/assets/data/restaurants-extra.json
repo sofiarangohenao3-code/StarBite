@@ -1,0 +1,175 @@
+[
+  {
+    "id_rest": 1,
+    "logo": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=400&q=80",
+    "coverImage": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=80",
+    "heroImages": [
+      "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "website": "https://mambanegra.com.co",
+    "social": {
+      "instagram": "https://instagram.com/mambanegra",
+      "facebook": "https://facebook.com/mambanegra",
+      "twitter": "https://x.com/mambanegra"
+    },
+    "cuisine": ["Parrilla", "Cocina de autor", "Fusión"],
+    "dietary": ["Vegetariano", "Sin gluten", "Keto"],
+    "payment": ["Tarjeta crédito", "Débito", "Efectivo", "Nequi / Daviplata"],
+    "services": ["Domicilio", "Para llevar", "En mesa"],
+    "tags": ["#carnesmedellín", "#parrilla", "#elpoblado", "#cocinadeautor", "#romántico", "#fechaespecial", "#cocktails"],
+    "rating": 4.8,
+    "reviewsCount": 1243,
+    "mapQuery": "Cra 37 #8A-23, El Poblado",
+    "menu": [
+      {
+        "name": "Lomo al trapo con chimichurri",
+        "description": "Corte premium madurado 30 días con papa criolla confitada.",
+        "price": "$89.000",
+        "image": "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        "name": "Costilla ahumada 12 horas",
+        "description": "Marinada en especias, servida con yuca frita y hogao.",
+        "price": "$74.000",
+        "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        "name": "Pulpo a la brasa con alioli",
+        "description": "Pulpo gallego, pimentón ahumado y aceite de oliva.",
+        "price": "$68.000",
+        "image": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80"
+      }
+    ]
+  },
+  {
+    "id_rest": 2,
+    "logo": "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=400&q=80",
+    "coverImage": "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=1200&q=80",
+    "heroImages": [
+      "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "website": "https://sushimarket.com.co",
+    "social": {
+      "instagram": "https://instagram.com/sushimarketco",
+      "facebook": "https://facebook.com/sushimarketco"
+    },
+    "cuisine": ["Japonesa", "Sushi", "Fusión"],
+    "dietary": ["Vegetariano", "Sin gluten", "Bajo en carbohidratos"],
+    "payment": ["Tarjeta crédito", "Débito", "Nequi / Daviplata"],
+    "services": ["Domicilio", "Para llevar", "En mesa"],
+    "tags": ["#sushi", "#japonesa", "#medellín", "#frescos", "#nigiri", "#rolls"],
+    "rating": 4.7,
+    "reviewsCount": 932,
+    "mapQuery": "Cll 10 #43D-28, El Poblado",
+    "menu": [
+      {
+        "name": "Sashimi mixto",
+        "description": "Selección de cortes frescos con salsa de soja y wasabi.",
+        "price": "$64.000",
+        "image": "https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        "name": "Temaki premium",
+        "description": "Cono de arroz relleno de salmón, avocado y mango.",
+        "price": "$49.000",
+        "image": "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        "name": "Ramen tonkotsu",
+        "description": "Sopa umami con cerdo, huevo y noodles artesanales.",
+        "price": "$58.000",
+        "image": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80"
+      }
+    ]
+  },
+  {
+    "id_rest": 3,
+    "logo": "https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=400&q=80",
+    "coverImage": "https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=1200&q=80",
+    "heroImages": [
+      "https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "website": "https://frisby.com.co",
+    "social": {
+      "instagram": "https://instagram.com/frisbycolombia",
+      "facebook": "https://facebook.com/frisbycolombia"
+    },
+    "cuisine": ["Pollo", "Fast food", "Casual"],
+    "dietary": ["Vegetariano", "Sin gluten"],
+    "payment": ["Efectivo", "Tarjeta débito", "Tarjeta crédito", "Nequi / Daviplata"],
+    "services": ["Para llevar", "Domicilio", "En mesa"],
+    "tags": ["#pollo", "#fastfood", "#colombia", "#broaster", "#tradición"],
+    "rating": 4.6,
+    "reviewsCount": 1880,
+    "mapQuery": "Av. El Poblado #1-20",
+    "menu": [
+      {
+        "name": "Pollo broaster clásico",
+        "description": "Crujiente por fuera y jugoso por dentro, con salsa especial.",
+        "price": "$24.000",
+        "image": "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        "name": "Combo familia",
+        "description": "Incluye pollo, papas y bebidas para compartir.",
+        "price": "$62.000",
+        "image": "https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        "name": "Miel & broaster",
+        "description": "Pollo con toque de miel y papas crunch.",
+        "price": "$28.000",
+        "image": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80"
+      }
+    ]
+  },
+  {
+    "id_rest": 4,
+    "logo": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80",
+    "coverImage": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80",
+    "heroImages": [
+      "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=80"
+    ],
+    "website": "https://trivios.com.co",
+    "social": {
+      "instagram": "https://instagram.com/triviosmedellin",
+      "facebook": "https://facebook.com/triviosmedellin"
+    },
+    "cuisine": ["Colombiana", "Contemporánea", "Casual"],
+    "dietary": ["Vegetariano", "Sin gluten"],
+    "payment": ["Tarjeta crédito", "Débito", "Efectivo"],
+    "services": ["En mesa", "Para llevar", "Domicilio"],
+    "tags": ["#colombiana", "#medellín", "#locales", "#innovación", "#cálido"],
+    "rating": 4.5,
+    "reviewsCount": 756,
+    "mapQuery": "Cra 43A #19-17, Medellín",
+    "menu": [
+      {
+        "name": "Ajiaco de la casa",
+        "description": "Cocina colombiana reinterpretada con ingredientes locales.",
+        "price": "$31.000",
+        "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        "name": "Arepa de trucha",
+        "description": "Arepa artesanal con trucha grillada y salsa criolla.",
+        "price": "$35.000",
+        "image": "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        "name": "Torta de chocolate",
+        "description": "Postre de cacao local con crema de coco.",
+        "price": "$18.000",
+        "image": "https://images.unsplash.com/photo-1464306076886-da185f6a886d?auto=format&fit=crop&w=800&q=80"
+      }
+    ]
+  }
+]
